@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>新しいTodoを入力 </title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>新しい画像をアップロード</h1>
+    <form th:action="@{/uploadnew}" th:method="post" enctype="multipart/form-data">
+        File : <input type="file" name="file" required/>
+        caption : <input type="text" name="caption" value="何か書いてね" required/>
+        <input type="submit" value="uploadnew" />
+    </form>
+</div>
+<div class="pull-right">
+    <a class="btn btn-link" href="/view_mine">一覧画面へ</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>uploadeds リスト</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Listing uploadeds</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>名前</th>
+            <th>期限</th>
+            <th>完了？</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="uploaded:${uploadeds}" th:object="${uploaded}">
+            <td th:text="*{name}"></td>
+            <td th:text="*{deadline}"></td>
+            <td th:text="*{isdone}"></td>
+
+            <td><a class="btn btn-default btn-xs" th:href="@{/uploadeds/{id}(id=*{id})}">参照</a></td>
+            <td><a class="btn btn-default btn-xs" th:href="@{/uploadeds/{id}/edit(id=*{id})}">編集</a></td>
+            <td>
+                <form th:action="@{/uploadeds/{id}(id=*{id})}" th:method="delete">
+                    <input class="btn btn-default btn-xs" type="submit" value="削除" />
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/uploadeds/{id}(id=*{id})}" th:method="post">
+                    <input class="btn btn-default btn-xs" type="submit" value="完了した!" />
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-default" href="/uploadeds/new">新しいuploadedを追加</a>
+</div>
+</body>
+</html>

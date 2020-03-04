@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html th:lang="JP" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>uploaded詳細</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Show uploaded</h1>
+
+    <div th:object="${uploaded}">
+        <div>
+            <label>名前</label>
+            <p th:text="*{name}"></p>
+        </div>
+        <div>
+            <label>Deadline</label>
+            <p th:text="*{deadline}"></p>
+        </div>
+        <td><a class="btn btn-default btn-xs" th:href="@{/uploadeds/{id}/edit(id=*{id})}">編集</a></td>
+        </div>
+
+    <div class="pull-right">
+        <a class="btn btn-link" href="/uploadeds">一覧画面へ</a>
+    </div>
+</div>
+</body>
+</html>
